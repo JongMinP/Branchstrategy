@@ -48,30 +48,18 @@ public class Oauth2Controller {
         
         OAuthClient oauthClient = new OAuthClient();
         
-        System.out.println("1111111111111111111");
-        System.out.println("1111111111111111111");
-        System.out.println("1111111111111111111");
         OAuth2Template oauth2Template = oauthClient.getCafe24OAuth2Template();
         oauth2Template.setRequestFactory(simpleClientHttpRequestFactory);
 
-        System.out.println("22222222222222");
-        System.out.println("22222222222222");
-        System.out.println("22222222222222");
         MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<String, String>();
         multiValueMap.add("client_id", oauthClient.getClinedId());
         multiValueMap.add("client_secret", oauthClient.getClinedId());
-        System.out.println("33333333333");
-        System.out.println("33333333333");
-        System.out.println("33333333333");
-        System.out.println("33333333333");
+
         AccessGrant accessGrant = oauth2Template.exchangeForAccess(
                 code,
                 oauthClient.getRedirectUri(),
                 multiValueMap
         );
-        System.out.println("444444444444444");
-        System.out.println("444444444444444");
-        System.out.println("444444444444444");
         System.out.println("------ AccessGrant ------");
         System.out.println(accessGrant.getAccessToken());
         System.out.println(accessGrant.getRefreshToken());
@@ -82,21 +70,6 @@ public class Oauth2Controller {
         
         return "kkkk";
 
-//        DaumProfileDetail daumProfileDetail = getDaumProfile(accessGrant).getResult();
-//        if (daumProfileDetail != null) {
-//            daumAccessToken.put(daumProfileDetail.getUserid(), accessGrant);
-//        }
-//
-//        return userService.daumLogin(request, daumProfileDetail);
-//    }
-	//	@RequestMapping( "/hello" )
-//	public ModelAndView hello( @RequestParam String name ) {
-//		
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject( "hello", "Hello " + name );
-//		mav.setViewName( "/WEB-INF/views/index.jsp" );
-//		
-//		return mav;
 	}
 	
 	@ResponseBody
